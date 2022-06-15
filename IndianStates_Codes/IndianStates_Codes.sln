@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndianStates_Codes", "IndianStates_Codes.csproj", "{6B9FE2DC-09B4-41CB-913B-692FFD370051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndianStates_Codes", "IndianStates_Codes.csproj", "{6B9FE2DC-09B4-41CB-913B-692FFD370051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndianStatesAndCode_Testing", "..\IndianStatesAndCode_Testing\IndianStatesAndCode_Testing.csproj", "{99C3122A-F25B-409E-B20D-551E0E6BC6A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6B9FE2DC-09B4-41CB-913B-692FFD370051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B9FE2DC-09B4-41CB-913B-692FFD370051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B9FE2DC-09B4-41CB-913B-692FFD370051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C3122A-F25B-409E-B20D-551E0E6BC6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C3122A-F25B-409E-B20D-551E0E6BC6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C3122A-F25B-409E-B20D-551E0E6BC6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C3122A-F25B-409E-B20D-551E0E6BC6A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

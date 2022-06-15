@@ -27,5 +27,21 @@ namespace IndianStatesAndCode_Testing
                 Assert.AreEqual("Invalid File", ex.Message);
             }
         }
+        [Test]
+        public void GivenInvalidFileType_ShouldThrowInvalidFileTypeException()
+        {
+            try
+            {
+                int expected = 29;
+                string filePath = @"D:\BridgeLabz\IndianStates-CensusAnalyser\IndianStates_Codes\StateCode.txt";
+                IndianStates_Codes.StatesAnalyser getMethod = new IndianStates_Codes.StatesAnalyser();
+                int actual = getMethod.DataAnalyser(filePath);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("Invalid File Type", ex.Message);
+            }
+        }
     }
 }

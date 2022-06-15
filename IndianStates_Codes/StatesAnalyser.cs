@@ -12,24 +12,32 @@ namespace IndianStates_Codes
     {
         public int DataAnalyser(string filePath)
         {
-            try
+            if (Path.GetExtension(filePath) == ".csv")
             {
-                using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                try
                 {
-                    var details = csv.GetRecords<StatesModel>().ToList();
-                    var numberOfRecords = details.Count();
-                    foreach (var item in details)
+                    int numberOfRecords;
+                    using (var reader = new StreamReader(filePath))
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                     {
-                        Console.WriteLine("State: " + item.State + "\nPopulation: " + item.Population + "\nAreaInSqKm: " + item.AreaInSqKm
-                            + "\nDensityPerSqKm: " + item.DensityPerSqKm + "\n");
+                        var details = csv.GetRecords<StatesModel>().ToList();
+                        numberOfRecords = details.Count();
+                        foreach (var item in details)
+                        {
+                            Console.WriteLine("State: " + item.State + "\nPopulation: " + item.Population + "\nAreaInSqKm: " + item.AreaInSqKm
+                                + "\nDensityPerSqKm: " + item.DensityPerSqKm + "\n");
+                        }
                     }
                     return numberOfRecords;
                 }
+                catch
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
+                }
             }
-            catch
+            else
             {
-                throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
+                throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
             }
         }
     }

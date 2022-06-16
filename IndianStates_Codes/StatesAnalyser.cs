@@ -47,23 +47,27 @@ namespace IndianStates_Codes
         }
         public int StateCodeAnalyser(string filePath)
         {
-            if(filePath.Contains("StateCode.csv"))
+            if(Path.GetExtension(filePath) == ".csv")
             {
-                int numberOfRecords;
-                using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                if (filePath.Contains("StateCode.csv"))
                 {
-                    var details = csv.GetRecords<StatesCode>().ToList();
-                    numberOfRecords = details.Count();
-                    foreach (var item in details)
+                    int numberOfRecords;
+                    using (var reader = new StreamReader(filePath))
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                     {
-                        Console.WriteLine("SrNo: " + item.SrNo + "\nState: " + item.State + "\nName: " + item.Name
-                            + "\nTIN: " + item.TIN + "\nStateCode: " + item.StateCode + "\n");
+                        var details = csv.GetRecords<StatesCode>().ToList();
+                        numberOfRecords = details.Count();
+                        foreach (var item in details)
+                        {
+                            Console.WriteLine("SrNo: " + item.SrNo + "\nState: " + item.State + "\nName: " + item.Name
+                                + "\nTIN: " + item.TIN + "\nStateCode: " + item.StateCode + "\n");
+                        }
                     }
+                    return numberOfRecords;
                 }
-                return numberOfRecords;
+                throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
             }
-            throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
+            throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
         }
     }
 }

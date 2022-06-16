@@ -32,21 +32,18 @@ namespace IndianStates_Codes
                         }
                         return numberOfRecords;
                     }
-                    else
-                    {
-                        throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
-                    }
+                    throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
                 }
-                catch (CsvHelper.MissingFieldException)
+                catch(CsvHelper.MissingFieldException)
                 {
                     throw new CustomException(CustomException.ExceptionType.INCORRECT_DELIMITER, "Incorrect Delimiter");
                 }
+                catch(CsvHelper.HeaderValidationException)
+                {
+                    throw new CustomException(CustomException.ExceptionType.INCORRECT_HEADER, "Incorrect Header");
+                }
             }
-            else
-            {
-                throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
-            }
-            return default;
+            throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
         }
     }
 }

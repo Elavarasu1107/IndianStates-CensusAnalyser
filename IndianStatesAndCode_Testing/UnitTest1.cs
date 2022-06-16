@@ -59,5 +59,21 @@ namespace IndianStatesAndCode_Testing
                 Assert.AreEqual("Incorrect Delimiter", ex.Message);
             }
         }
+        [Test]
+        public void GivenIncorrectHeaderFile_ShouldThrowIncorrectHeaderFileTypeException()
+        {
+            try
+            {
+                int expected = 29;
+                string filePath = @"D:\BridgeLabz\IndianStates-CensusAnalyser\IndianStates_Codes\IncorrectHeaderCensusData.csv";
+                IndianStates_Codes.StatesAnalyser getMethod = new IndianStates_Codes.StatesAnalyser();
+                int actual = getMethod.DataAnalyser(filePath);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("Incorrect Header", ex.Message);
+            }
+        }
     }
 }

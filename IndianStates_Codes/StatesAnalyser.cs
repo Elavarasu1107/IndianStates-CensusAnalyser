@@ -45,5 +45,21 @@ namespace IndianStates_Codes
             }
             throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
         }
+        public int StateCodeAnalyser(string filePath)
+        {
+            int numberOfRecords;
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var details = csv.GetRecords<StatesCode>().ToList();
+                numberOfRecords = details.Count();
+                foreach (var item in details)
+                {
+                    Console.WriteLine("SrNo: " + item.SrNo + "\nState: " + item.State + "\nName: " + item.Name
+                        + "\nTIN: " + item.TIN + "\nStateCode: " + item.StateCode + "\n");
+                }
+            }
+            return numberOfRecords;
+        }
     }
 }

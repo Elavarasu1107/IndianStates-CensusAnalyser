@@ -75,6 +75,16 @@ namespace IndianStatesAndCode_Testing
             {
                 Assert.AreEqual("Incorrect Header", ex.Message);
             }
-        } 
+        }
+        //UC2:
+        [Test]
+        public void GivenStatesCodeCSVFile_CheckNumberOfRecordsMatches()
+        {
+            int expected = 37;
+            string filePath = @"D:\BridgeLabz\IndianStates-CensusAnalyser\IndianStates_Codes\StateCode.csv";
+            IndianStates_Codes.StatesAnalyser getMethod = new IndianStates_Codes.StatesAnalyser();
+            int actual = getMethod.StateCodeAnalyser(filePath);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -73,6 +73,10 @@ namespace IndianStates_Codes
                 {
                     throw new CustomException(CustomException.ExceptionType.INCORRECT_DELIMITER, "Incorrect Delimiter");
                 }
+                catch (CsvHelper.HeaderValidationException)
+                {
+                    throw new CustomException(CustomException.ExceptionType.INCORRECT_HEADER, "Incorrect Header");
+                }
             }
             throw new CustomException(CustomException.ExceptionType.INVALID_FILE_TYPE, "Invalid File Type");
         }
